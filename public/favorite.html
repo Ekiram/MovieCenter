@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Favourite movies</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/favorite.css">
+</head>
+<body class="favoriteBody">
+
+
+<div class="navbar">
+
+  <ul>
+    <li><a href="carousel.html">Carousel</a></li>
+    <li><a href="surprise.html">Random</a></li>
+    <li><a href="kids.html">Kids</a></li>
+    <li><a href="library.html">Library</a></li>
+  </ul>
+</div>
+
+
+<div id="app" class="center">
+  <form v-on:submit.prevent="addMovie" class="addMovie">
+    <label class="labelText">Add movie: </label>
+    <input type="text" v-model="newMovie" placeholder="Name of movie" class="input">
+    <button>Add</button>
+  </form>
+  <h2>{{newMovie}}</h2>
+  <div class="list">
+    <ul>
+      <li v-for="(Movie, index) in MovieArray" :class="{MovieFavorite: Movie.favorite}">
+        {{Movie.name}}
+        <button @click="deleteMovie(index)">Delete</button>
+      </li>
+    </ul>
+  </div>
+
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          newMovie: '',
+          MovieArray: [
+            {
+              id: 1,
+              name: 'Star wars',
+              favorite: false
+            },
+            {
+              id: 2,
+              name: 'Divergent',
+              favorite: false
+            }
+          ],
+          nextMovieId: 3
+        }
+      },
+      methods:{
+        addMovie(){
+          this.MovieArray.push({
+                    id: this.nextMovieId++,
+                    name: this.newMovie
+                  }
+          )
+        },
+        deleteMovie(MovieIndex){
+          this.MovieArray.splice(MovieIndex, 1)
+        },
+        makeMovieFavorite(MovieMark){
+          MovieMark.favorite = true
+
+        }
+      }
+    }).mount('#app')
+  </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+body {
+    background-color: white;
+}
+
+img {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 200px;
+    margin-bottom: 50px;
+}
+
+#movielist {
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+    list-style: center;
+}
+
+
+
+

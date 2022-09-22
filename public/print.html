@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vue Mastery</title>
+  <link rel="stylesheet" href="css/review.css" />
+
+  <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+  <product-Display :premium="premium"></product-Display>
+</div>
+<script src="./main.js"></script>
+
+<script src="productDisplay.js"></script>
+<script src="Form.js"></script>
+<script src="listedRatings.js"></script>
+
+<script>
+  const mountedApp = app.mount('#app')
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="css/libraryStyle.css">
+    <title>Movie Center</title>
+</head>
+
+<div class="navbar">
+    <li><a href="carousel.html">Carousel</a>
+    </li><li><a href="random.html">Random</a></li>
+    <li><a href="kids.html">Kids</a></li>
+    <li><a href="favorite.html">Favourite</a></li>
+</div>
+
+<body>
+    <h1>Welcome to the libary!</h1>
+    <h2>Here's a display of all our movies</h2>
+
+    <div id="wrapper">
+        <div id="app" class="center">
+            <form v-on:submit.prevent="search-movie" class="search-movie">
+                <label class="labelText">Search: </label>
+                <input type="text" v-model="searchMovie" placeholder="Name of movie" class="input">
+                <button>Search:</button>
+            </form>
+        </div>
+
+ <ul id="movie"></ul>
+        <!-- Vue kod, -->
+
+<script src="https://unpkg.com/vue@3"></script>
+
+<script>let Vue;const app = Vue.createApp({data() {
+    return {msg: 'Movies in libary',movies: [],search: '',}},mounted() {
+    fetch('http://localhost:3000/api/movies')
+        .then((response) => {return response.json();})
+        .then((data) => {console.log(data);this.movies = data.movies;});},computed: {}}).mount('#app')</script><!-- script/fetch --><script src="fetch-movie.js"></script></div></body></html>
+
