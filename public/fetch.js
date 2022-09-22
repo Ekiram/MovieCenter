@@ -17,7 +17,6 @@ fetch(url)
         let movie = data.movie;
         return movie.map(function(movie) {
             let li = createNode('li');
-           // li.innerHTML = movie.movieName + " " + movie.movieCategory;
             li.innerHTML = `${movie.movieName} <img src="img/${movie.movieImg}">`
             append(ul, li);
         })

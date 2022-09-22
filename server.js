@@ -42,6 +42,7 @@ app.get("/api/movies/:id", (req, res, next) => {
         res.json({
             "message":"success",
             "movie":row
+
         })
     })
 })
@@ -54,7 +55,7 @@ app.post("/api/movies", (req, res, next) => {
         movieCategory: req.body.movieCategory,
         movieImg: req.body.movieImg
     }
-    let sql ='INSERT INTO movie (movieId, movieName, movieDescription, movieCategory,movieImg) VALUES (?,?,?,?,?)'
+    let sql ='INSERT INTO movie (movieName, movieDescription, movieCategory,movieImg) VALUES (?,?,?,?)'
     let params =[data.movieName, data.movieDescription, data.movieCategory, data.movieImg]
     db.run(sql, params, function (err, result) {
         if (err){
@@ -104,6 +105,8 @@ app.delete("/api/movies", (req, res, next) => {
             res.json({"message":"deleted", rows: this.changes})
         })
 })
+
+
 
 
 
